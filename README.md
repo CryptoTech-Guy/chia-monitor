@@ -4,7 +4,11 @@ Available Telegraf plugins can found [here](https://docs.influxdata.com/telegraf
 
 In my case, I already had InfluxDB & Grafana as part of my [Home-Assistant](https://www.home-assistant.io/) setup, running on Raspberry Pi 4. But this can be installed on any Windows or Linux machine.
 
-Check out my [Dashboard overview video](https://youtu.be/SZ7zhTrNbyo)
+Check out my videos:
+
+Part 1 - [Dashboard overview video](https://youtu.be/SZ7zhTrNbyo)
+
+Part 2 - [how to setup](https://youtu.be/ySh7bbwvn5c)
 
 Windows installation: [Telegraf](https://docs.influxdata.com/telegraf/v1.19/introduction/installation/?t=Windows) | [InfluxDB](https://docs.influxdata.com/influxdb/v2.0/install/?t=Windows) | [Grafana](https://grafana.com/docs/grafana/latest/installation/windows/)
 
