@@ -16,6 +16,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 1,
+  "iteration": 1626480121925,
   "links": [],
   "panels": [
     {
@@ -38,10 +39,27 @@
           },
           "unit": "XCH"
         },
-        "overrides": []
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Payout (€)"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "currencyEUR"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          }
+        ]
       },
       "gridPos": {
-        "h": 4,
+        "h": 8,
         "w": 3,
         "x": 0,
         "y": 0
@@ -66,7 +84,7 @@
         },
         "textMode": "value_and_name"
       },
-      "pluginVersion": "8.0.4",
+      "pluginVersion": "8.0.6",
       "targets": [
         {
           "alias": "Farmed",
@@ -112,6 +130,62 @@
               {
                 "params": [],
                 "type": "last"
+              }
+            ]
+          ],
+          "tags": []
+        },
+        {
+          "alias": "Pending Balance",
+          "groupBy": [],
+          "hide": false,
+          "measurement": "http",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "C",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "unpaidBalanceInXCH"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              }
+            ]
+          ],
+          "tags": []
+        },
+        {
+          "alias": "Payout (€)",
+          "groupBy": [],
+          "hide": false,
+          "measurement": "http",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "D",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "totalPaidInXCH"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              },
+              {
+                "params": [
+                  "* $xch_eur"
+                ],
+                "type": "math"
               }
             ]
           ],
@@ -184,7 +258,7 @@
         "text": {},
         "textMode": "value_and_name"
       },
-      "pluginVersion": "8.0.4",
+      "pluginVersion": "8.0.6",
       "targets": [
         {
           "alias": "Total #",
@@ -261,7 +335,7 @@
           "tags": []
         }
       ],
-      "timeFrom": "20m",
+      "timeFrom": "15m",
       "title": "Plots",
       "type": "stat"
     },
@@ -350,7 +424,7 @@
         "text": {},
         "textMode": "value_and_name"
       },
-      "pluginVersion": "8.0.4",
+      "pluginVersion": "8.0.6",
       "targets": [
         {
           "alias": "Exp. Time to Win",
@@ -482,7 +556,7 @@
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "mode": "continuous-BlPu"
           },
           "mappings": [],
           "thresholds": {
@@ -518,7 +592,7 @@
       },
       "gridPos": {
         "h": 8,
-        "w": 3,
+        "w": 2,
         "x": 9,
         "y": 0
       },
@@ -540,8 +614,33 @@
         "text": {},
         "textMode": "value_and_name"
       },
-      "pluginVersion": "8.0.4",
+      "pluginVersion": "8.0.6",
       "targets": [
+        {
+          "alias": "Rank",
+          "groupBy": [],
+          "hide": false,
+          "measurement": "http",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "rank"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              }
+            ]
+          ],
+          "tags": []
+        },
         {
           "alias": "Points",
           "groupBy": [],
@@ -690,8 +789,8 @@
       },
       "gridPos": {
         "h": 4,
-        "w": 7,
-        "x": 12,
+        "w": 8,
+        "x": 11,
         "y": 0
       },
       "id": 4,
@@ -710,7 +809,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.4",
+      "pluginVersion": "8.0.6",
       "targets": [
         {
           "alias": "CPU",
@@ -918,7 +1017,7 @@
         "showUnfilled": true,
         "text": {}
       },
-      "pluginVersion": "8.0.4",
+      "pluginVersion": "8.0.6",
       "targets": [
         {
           "alias": "nvme0-s1",
@@ -1100,8 +1199,8 @@
       },
       "gridPos": {
         "h": 4,
-        "w": 3,
-        "x": 0,
+        "w": 4,
+        "x": 11,
         "y": 4
       },
       "hideTimeOverride": true,
@@ -1121,7 +1220,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.4",
+      "pluginVersion": "8.0.6",
       "targets": [
         {
           "groupBy": [
@@ -1160,7 +1259,7 @@
           "tags": []
         }
       ],
-      "timeFrom": "90h",
+      "timeFrom": "1w",
       "timeShift": null,
       "title": "Net space (1 week)",
       "type": "stat"
@@ -1199,8 +1298,8 @@
       },
       "gridPos": {
         "h": 4,
-        "w": 7,
-        "x": 12,
+        "w": 4,
+        "x": 15,
         "y": 4
       },
       "id": 27,
@@ -1217,7 +1316,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.0.4",
+      "pluginVersion": "8.0.6",
       "targets": [
         {
           "alias": "980pro-IO%",
@@ -1227,6 +1326,12 @@
                 "1s"
               ],
               "type": "time"
+            },
+            {
+              "params": [
+                "name"
+              ],
+              "type": "tag"
             }
           ],
           "hide": false,
@@ -1329,7 +1434,7 @@
               "type": "time"
             }
           ],
-          "hide": false,
+          "hide": true,
           "measurement": "diskio",
           "orderByTime": "ASC",
           "policy": "default",
@@ -1483,7 +1588,7 @@
         "showThresholdMarkers": false,
         "text": {}
       },
-      "pluginVersion": "8.0.4",
+      "pluginVersion": "8.0.6",
       "targets": [
         {
           "alias": "$tag_path",
@@ -1755,7 +1860,14 @@
         },
         {
           "alias": "Proofs",
-          "groupBy": [],
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            }
+          ],
           "hide": false,
           "measurement": "farm_logs",
           "orderByTime": "ASC",
@@ -1771,6 +1883,10 @@
                   "proofs"
                 ],
                 "type": "field"
+              },
+              {
+                "params": [],
+                "type": "sum"
               }
             ]
           ],
@@ -3718,7 +3834,7 @@
           }
         ]
       },
-      "pluginVersion": "8.0.4",
+      "pluginVersion": "8.0.6",
       "targets": [
         {
           "groupBy": [
@@ -4668,7 +4784,7 @@
         "showUnfilled": true,
         "text": {}
       },
-      "pluginVersion": "8.0.4",
+      "pluginVersion": "8.0.6",
       "targets": [
         {
           "alias": "$tag_device",
@@ -4763,7 +4879,7 @@
         "showUnfilled": true,
         "text": {}
       },
-      "pluginVersion": "8.0.4",
+      "pluginVersion": "8.0.6",
       "targets": [
         {
           "alias": "$tag_device",
@@ -4815,7 +4931,32 @@
   "style": "dark",
   "tags": [],
   "templating": {
-    "list": []
+    "list": [
+      {
+        "allValue": null,
+        "current": {
+          "selected": false,
+          "text": "175.9814615667458",
+          "value": "175.9814615667458"
+        },
+        "datasource": "InfluxDB-hass",
+        "definition": "SELECT last(\"EUR\") FROM \"sensor.xch\" WHERE (\"entity_id\" = 'xch')",
+        "description": null,
+        "error": null,
+        "hide": 2,
+        "includeAll": false,
+        "label": "XCH-EUR",
+        "multi": false,
+        "name": "xch_eur",
+        "options": [],
+        "query": "SELECT last(\"EUR\") FROM \"sensor.xch\" WHERE (\"entity_id\" = 'xch')",
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      }
+    ]
   },
   "time": {
     "from": "now-3h",
@@ -4825,5 +4966,5 @@
   "timezone": "",
   "title": "Chia Server",
   "uid": "X_PJ-bqMz",
-  "version": 134
+  "version": 144
 }
